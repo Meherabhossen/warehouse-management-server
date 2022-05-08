@@ -1,0 +1,19 @@
+{
+  "name": "assignment-11-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Meherabhossen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Meherabhossen/issues"
+  },
+  "homepage": "https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-Meherabhossen#readme"
+}
