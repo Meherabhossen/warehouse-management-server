@@ -84,7 +84,7 @@ async function run() {
 run().catch(console.dir)
 
 app.get('/', (req, res) => {
-    res.send('Laptop werehouse server')
+    res.send('ToyLand werehouse server')
 });
 
 app.listen(port, () => {
