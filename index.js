@@ -19,7 +19,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        const laptopCollection = client.db('Werehouse-Laptop').collection('laptop')
+        const laptopCollection = client.db('assignment-11').collection('mycollection')
 
         // JWT
         app.post('/login', async (req, res) => {
