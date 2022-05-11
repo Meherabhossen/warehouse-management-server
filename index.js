@@ -32,7 +32,7 @@ async function run() {
 
         // 
 
-        app.get('/laptop', async (req, res) => {
+        app.get('/toyland', async (req, res) => {
             console.log('query', req.query);
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
@@ -54,7 +54,7 @@ async function run() {
                 const users = await cursor.toArray();
                 res.send(users);
             });
-            // Post laptop (Add new laptop)
+            // Post Toyland (Add new laptop)
             app.post('/user', async (req, res) => {
                 const newUser = req.body;
                 console.log('new', newUser);
@@ -62,14 +62,14 @@ async function run() {
                 res.send(result);
             });
             // paigination
-            app.get('/laptopcount', async (req, res) => {
+            app.get('/toycount', async (req, res) => {
                 // const query = {};
-                // const cursor = laptopCollection.find(query);
+                // const cursor = ToyCollection.find(query);
                 const count = await laptopCollection.estimatedDocumentCount();
                 res.send({ count });
             })
         })
-        // delete laptop
+        // delete Toy
         app.delete('/user/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
