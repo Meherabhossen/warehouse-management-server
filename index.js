@@ -19,7 +19,7 @@ const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology:
 async function run() {
     try {
         await client.connect();
-        const laptopCollection = client.db('assignment-11').collection('mycollection')
+        const toyCollection = client.db('assignment-11').collection('mycollection')
 
         // JWT
         app.post('/login', async (req, res) => {
@@ -37,20 +37,20 @@ async function run() {
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
             const query = {};
-            const cursor = laptopCollection.find(query);
-            let laptops;
+            const cursor = toyCollection.find(query);
+            let toys;
             if (page || size) {
-                laptops = await cursor.skip(page * size).limit(size).toArray();
+                toys = await cursor.skip(page * size).limit(size).toArray();
             }
             else {
-                laptops = await cursor.toArray();
+                toys = await cursor.toArray();
             }
 
-            res.send(laptops);
+            res.send(toys);
             // Load Item
             app.get('/user', async (req, res) => {
                 const query = {}
-                const cursor = laptopCollection.find(query);
+                const cursor = toyCollection.find(query);
                 const users = await cursor.toArray();
                 res.send(users);
             });
@@ -58,14 +58,14 @@ async function run() {
             app.post('/user', async (req, res) => {
                 const newUser = req.body;
                 console.log('new', newUser);
-                const result = await laptopCollection.insertOne(newUser);
+                const result = await toyCollection.insertOne(newUser);
                 res.send(result);
             });
             // paigination
             app.get('/toycount', async (req, res) => {
                 // const query = {};
                 // const cursor = ToyCollection.find(query);
-                const count = await laptopCollection.estimatedDocumentCount();
+                const count = await toyCollection.estimatedDocumentCount();
                 res.send({ count });
             })
         })
@@ -73,7 +73,7 @@ async function run() {
         app.delete('/user/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
-            const result = await laptopCollection.deleteOne(query);
+            const result = await toyCollection.deleteOne(query);
             res.send(result);
         })
     }
